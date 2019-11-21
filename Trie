@@ -1,0 +1,28 @@
+#pragma once
+#include <iostream>
+#include <list>
+#include <string>
+#include "TrieNode.h"
+
+class Trie
+{
+	TrieNode* root;
+	void insert(string word, TrieNode* current);
+	bool del(string word, TrieNode* current, int length, TrieNode* fathe);
+	bool findWord(string word, TrieNode* current, int length);
+	bool printWords(TrieNode* node, string str);
+	void clear(TrieNode* current);
+	TrieNode* findNode(string str);
+	bool search(string word) { return search(word, root, word.length()); }
+	bool search(string word, TrieNode* current, int length);
+public:
+	
+	//c-tor
+	Trie();
+	~Trie() { clear(root); }
+	//method
+	void insert(string word) { insert(word, root); };
+	bool del(string word);
+	bool findWord(string word) { return findWord(word, root, word.length()); }
+	bool printWords(string str2);
+};
